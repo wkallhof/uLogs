@@ -1,0 +1,10 @@
+﻿{
+	javascript: [
+		'~/App_Plugins/uLogs/assets/scripts/app.js',
+		'~/App_Plugins/uLogs/assets/scripts/vendors.min.js'
+	],
+	css: [
+		'~/App_Plugins/uLogs/assets/styles/styles.min.css',
+		'~/App_Plugins/uLogs/assets/styles/vendors.min.css'
+	]
+}

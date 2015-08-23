@@ -1,0 +1,113 @@
+﻿<div id="logViewer" ng-controller="uLogsController" class="tables-data">
+    <div class="main-container  theme-template-dark ng-scope theme-template-light theme-deep-orange alert-open alert-with-mat-grow-top-right">
+        <div class="main-content" autoscroll="true" bs-affix-target="" init-ripples="">
+            <section class="tables-data">
+
+                <!-- Header Content -->
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-list"></i>
+                        uLogs Trace Log Viewer
+                    </h1>
+                    <p class="lead">
+                        Easily view and refine the Umbraco Trace Logs stored on the server. <br />
+                        Select a log date from the list below to view logs for that specific date. Filter by log Level or search for text in the log Message.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <!-- Log Date Picker -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group" style="padding-bottom:40px">
+                                <label class="control-label" style="width:80px">Log Date</label>
+                                <select ng-options="item as (item | date:'M/d/yy') for item in dates" ng-model="selectedDate" ng-change="onDateChange()"></select>
+                            </div>
+                          </div>
+                    </div>
+
+                    <!-- Log Level Filters -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="table-search">
+                                <button class="btn btn-default btn-sm" ng-class="{'disabled':selectedFilter == '' || allCount == 0}" ng-click="onLevelFilterClick('')">All  <span class="badge badge-danger">{{allCount}}</span></button>
+                                <button class="btn btn-info btn-sm" ng-class="{'disabled':selectedFilter == 'INFO' || infoCount == 0}" ng-click="onLevelFilterClick('INFO')">Info  <span class="badge badge-danger">{{infoCount}}</span></button>
+                                <button class="btn btn-warning btn-sm" ng-class="{'disabled':selectedFilter == 'WARN' || warnCount == 0}" ng-click="onLevelFilterClick('WARN')">Warning  <span class="badge badge-danger">{{warnCount}}</span></button>
+                                <button class="btn btn-danger btn-sm" ng-class="{'disabled':selectedFilter == 'ERROR' || errorCount == 0}" ng-click="onLevelFilterClick('ERROR')">Error  <span class="badge badge-danger">{{errorCount}}</span></button>
+                            </div>
+                       </div>
+
+                        <!-- Log Message Text Filter -->
+                        <div class="col-md-6">
+                            <div class="table-search">
+                                <input type="text" ng-model="tableParams.filter()['Search']" class="form-control" placeholder="Search data" autofocus />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log Table -->
+                    <div class="table-responsive white">
+                        <table ng-table="tableParams" template-header="header" template-pagination="pager" class="table table-full table-full-small">
+                            <tr ng-repeat="item in $data">
+                                <td data-title="'Time'" sortable="'Date'">
+                                    {{ item.Date | date:'h:mm:ss a' }}
+                                </td>
+                                <td data-title="'Level'" sortable="'Level'">
+                                    <span class="badge" ng-class="{'orange':item.Level == 'WARN', 'red':item.Level =='ERROR', 'cyan':item.Level =='INFO'}">{{ item.Level }}</span>
+                                </td>
+                                <td data-title="'Message'" sortable="'Message'">
+                                    <div ng-show="!showFull">
+                                         {{ item.Message | limitTo:85 }}{{item.Message.length > 85 ? '&hellip;' : ''}}
+                                        <button class="btn btn-link btn small" ng-show="item.Message.length > 85" ng-click="showFull = true">View More</button>
+                                    </div>
+
+                                    <div ng-show="showFull">
+                                        <snippet>{{item.Message}}</snippet>
+                                        <button class="btn btn-link btn small"  ng-click="showFull = false">View Less</button>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination Template for ngTable log table -->
+<script type="text/ng-template" id="pager">
+    <div class="p-20">
+        <ul class="pager ng-cloak">
+            <li ng-repeat="page in pages"
+                ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+                ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+                <button type="button" ng-switch-when="prev" ng-click="params.page(page.number)" class="btn btn-default pull-left">&laquo; Previous</button>
+                <button type="button" ng-switch-when="next" ng-click="params.page(page.number)" class="btn btn-default pull-right">Next &raquo;</button>
+            </li>
+            <li>
+                <div class="btn-group">
+                    <button type="button" ng-class="{'active':params.count() == 10}" ng-click="params.count(10)" class="btn btn-default">10</button>
+                    <button type="button" ng-class="{'active':params.count() == 25}" ng-click="params.count(25)" class="btn btn-default">25</button>
+                    <button type="button" ng-class="{'active':params.count() == 50}" ng-click="params.count(50)" class="btn btn-default">50</button>
+                    <button type="button" ng-class="{'active':params.count() == 100}" ng-click="params.count(100)" class="btn btn-default">100</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>
+
+<!-- Header Template for ngTable log table -->
+<script  type="text/ng-template" id="header">
+<tr>
+    <th title="{{$column.headerTitle(this)}}" ng-repeat="$column in $columns" ng-class="{ 'sortable': $column.sortable(this), 'sort-asc': params.sorting()[$column.sortable(this)]=='asc', 'sort-desc': params.sorting()[$column.sortable(this)]=='desc' }" ng-click="sortBy($column, $event)" ng-show="$column.show(this)" ng-init="template=$column.headerTemplateURL(this)" class="header {{$column.class(this)}}">
+        <div ng-if="!template" ng-show="!template" class="ng-table-header" ng-class="{'sort-indicator': $column.sortIndicator(this)=='div'}"> <span ng-bind="$column.title(this)" ng-class="{'sort-indicator': $column.sortIndicator(this)=='span'}"></span> </div>
+        <div ng-if="template" ng-show="template" ng-include="template"></div>
+    </th>
+</tr>
+</script>
