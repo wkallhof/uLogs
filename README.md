@@ -1,5 +1,5 @@
 # uLogs
-An Umbraco Trace Log view plugin for the Umbraco Back-Office that allows you to view logs by date and a variety of refinements. 
+An Umbraco Trace Log view plugin for the Umbraco 7.3 Back-Office that allows you to view logs by date and a variety of refinements. 
 
 [![Build status](https://img.shields.io/appveyor/ci/wkallhof/ulogs/master.svg)](https://ci.appveyor.com/project/wkallhof/ulogs/branch/master)
 
