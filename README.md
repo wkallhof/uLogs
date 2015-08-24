@@ -15,7 +15,7 @@ Utilizes [ngTable][ngTableLink] for an AngularJs driven data table which include
 
 ### Getting Started ###
 
-``` Install-Package uLogs -Pre ```
+<br/>Nuget Package: ` Install-Package uLogs -Pre `
 
 ### Usage ###
 
@@ -32,6 +32,22 @@ Once you have located a log, clicking the "View More" link will display a syntax
 
 
 ### Extend & Configure ###
+uLogs provides a variety of configuration options along with allowing you to supply your own Log File and Log Data providers to be used by uLogs. This means you can write your own custom log file provider and/or your own custom log parser and integrate with uLogs to display your log results within the Umbraco Back-Office.
+
+When "code" configuration or extensions are referenced below, the code referenced should be place in the `protected override void OnApplicationStarting(object sender, EventArgs e)` method generally defined in the `global.asax.cs` file referenced in the solution, but it could exist on any event handler that inherits from `UmbracoApplication`
+
+#### Logs Directory ####
+You can provide your own value for where the logs are stored (default : ~/App_Data/Logs). This will be used by the default LogFileProvider to find the logs to parse. You can do this in 1 of 2 ways:
+###### 1. App Setting : ######
+Add the following App Setting in your `web.config` file
+```xml
+<add key="uLogs.LogsDirectory" value="~/path/to/custom/directory" />
+```
+###### 2. Code : ######
+Add the following in your `OnApplicationStarting` method
+```cs
+uLogs.uLogsResolver.LogsDirectory = "~/path/to/custom/directory";
+```
 
 
 
