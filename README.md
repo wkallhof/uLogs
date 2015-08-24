@@ -23,7 +23,7 @@ Nuget Package: ` Install-Package uLogs -Pre `
 Navigate to the Umbraco > Developers section. You will find a 'Trace Logs' tab in the right pane. Select this to view the uLogs Trace Log Viewer. From this window you can select a log from the available date dropdown in order to see the logs for the given date.
 ![Go to Umbraco > Developers > Trace Logs][introImage]
 
-#### 2. Refine and Locate ####
+#### 2. Refine & Locate ####
 Once you have selected a log date and logs are shown, proceed to refine by log Level (ex. select the ERROR button to narrow the results down to Error logs) or Text search by entering text in the 'Search data' input box. As you type, results will display in real time. 
 
 Once you have located a log, clicking the "View More" link will display a syntax highlighted version of the log message. Clicking the "View Less" button at the end of the message will return the message back to the closed state.
