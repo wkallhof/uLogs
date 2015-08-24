@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wmk.LogViewer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("uLogs")]
+[assembly: AssemblyDescription("Umbraco Trace Log viewer for the Umbraco Back-Office")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wmk.LogViewer")]
+[assembly: AssemblyCompany("WMK.IO")]
+[assembly: AssemblyProduct("uLogs")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
