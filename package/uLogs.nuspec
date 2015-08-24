@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>uLogs</id>
-    <version>1.0.0-beta</version>
+    <version>1.0.2-beta</version>
     <authors>WMK.IO</authors>
     <owners>WMK.IO</owners>
     <licenseUrl>https://raw.githubusercontent.com/wkallhof/uLogs/master/LICENSE</licenseUrl>
