@@ -96,6 +96,6 @@ __Support:__ [Documentation Wiki](https://github.com/wkallhof/uLogs/wiki), [Issu
 
 [ngTableLink]: https://github.com/esvit/ng-table
 [highlightJsLink]: https://github.com/isagalaev/highlight.js
-[logoImage]: https://raw.githubusercontent.com/wkallhof/uLogs/master/package/uLogsLogo.png  "Logo"
-[introImage]: https://raw.githubusercontent.com/wkallhof/uLogs/master/package/Intro.gif  "Intro"
-[usageImage]: https://raw.githubusercontent.com/wkallhof/uLogs/master/package/Usage.gif  "Usage"
+[logoImage]: package/uLogsLogo.png  "Logo"
+[introImage]: package/Intro.gif  "Intro"
+[usageImage]: package/Usage.gif  "Usage"
