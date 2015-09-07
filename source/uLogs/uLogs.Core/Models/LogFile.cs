@@ -8,6 +8,6 @@ namespace uLogs.Models
     public class LogFile
     {
         public string Path { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

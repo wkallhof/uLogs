@@ -106,7 +106,7 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
 angular.module("umbraco.resources").factory("uLogsApi", function ($http) {
     return {
         getLogsForDate: function (date) {
-            return $http.get("backoffice/uLogs/uLogsApi/GetLogsForDate?date=" + date);
+            return $http.get("backoffice/uLogs/uLogsApi/GetLogsForDate?date=" + encodeURIComponent(date));
         },
 
         getAvailableDates: function()

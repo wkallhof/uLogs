@@ -45,7 +45,7 @@ namespace uLogs.Providers
         {
             //Get the log file for the given date
             var file = this._logFiles
-                .FirstOrDefault(x => x.Date.HasValue && x.Date.Equals(date));
+                .FirstOrDefault(x => x.Date.Equals(date));
 
             //If it doesn't exist, throw exception
             if (file == null || string.IsNullOrWhiteSpace(file.Path) || !File.Exists(file.Path))
@@ -117,8 +117,7 @@ namespace uLogs.Providers
         public IEnumerable<DateTime> GetLogDates()
         {
             return this._logFiles
-                .Where(x => x.Date.HasValue)
-                .Select(x => x.Date.Value)
+                .Select(x => x.Date)
                 .OrderBy(x => x);
         }
     }
