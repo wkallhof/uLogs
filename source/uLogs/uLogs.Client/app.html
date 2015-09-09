@@ -23,7 +23,7 @@
                         <div class="col-md-12">
                             <div class="form-group" style="padding-bottom:40px">
                                 <label class="control-label" style="width:80px">Log Date</label>
-                                <select ng-options="item as (item | date:'M/d/yy') for item in dates" ng-model="selectedDate" ng-change="onDateChange()"></select>
+                                <select ng-options="item as (item | date:'M/d/yy') for item in dates" ng-model="selectedDate" ng-change="onDateChange()" no-dirty-check></select>
                             </div>
                           </div>
                     </div>
@@ -42,7 +42,7 @@
                         <!-- Log Message Text Filter -->
                         <div class="col-md-6">
                             <div class="table-search">
-                                <input type="text" ng-model="tableParams.filter()['Search']" class="form-control" placeholder="Search data" autofocus />
+                                <input type="text" ng-model="tableParams.filter()['Search']" class="form-control" placeholder="Search data" autofocus no-dirty-check/>
                             </div>
                         </div>
                     </div>
