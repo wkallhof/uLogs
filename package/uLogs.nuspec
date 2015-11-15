@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>uLogs</id>
-    <version>1.0.6-RC</version>
+    <version>1.0.8</version>
     <authors>WMK.IO</authors>
     <owners>WMK.IO</owners>
     <licenseUrl>https://raw.githubusercontent.com/wkallhof/uLogs/master/LICENSE</licenseUrl>
@@ -12,9 +12,6 @@
     <description>Umbraco Trace Log viewer for the Umbraco 7.3 Back-Office</description>
     <copyright>Copyright 2015</copyright>
     <tags>umbraco</tags>
-    <dependencies>
-      <dependency id="UmbracoCms" version="7.3.0-RC" />
-    </dependencies>
   </metadata>
   <files>
   	<file src="..\source\uLogs\bin\release\uLogs.dll" target="lib\net452" />
