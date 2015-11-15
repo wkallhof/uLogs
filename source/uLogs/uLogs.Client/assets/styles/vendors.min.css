@@ -7,93 +7,93 @@
 /* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
 
 /* Atelier-Cave Comment */
-.hljs-comment {
+.ulogs-hljs-comment {
   color: #655f6d;
 }
 
 /* Atelier-Cave Red */
-.hljs-variable,
-.hljs-attribute,
-.hljs-tag,
-.hljs-regexp,
-.hljs-name,
-.ruby .hljs-constant,
-.xml .hljs-tag .hljs-title,
-.xml .hljs-pi,
-.xml .hljs-doctype,
-.html .hljs-doctype,
-.css .hljs-id,
-.css .hljs-class,
-.css .hljs-pseudo {
+.ulogs-hljs-variable,
+.ulogs-hljs-attribute,
+.ulogs-hljs-tag,
+.ulogs-hljs-regexp,
+.ulogs-hljs-name,
+.ruby .ulogs-hljs-constant,
+.xml .ulogs-hljs-tag .ulogs-hljs-title,
+.xml .ulogs-hljs-pi,
+.xml .ulogs-hljs-doctype,
+.html .ulogs-hljs-doctype,
+.css .ulogs-hljs-id,
+.css .ulogs-hljs-class,
+.css .ulogs-hljs-pseudo {
   color: #be4678;
 }
 
 /* Atelier-Cave Orange */
-.hljs-number,
-.hljs-preprocessor,
-.hljs-built_in,
-.hljs-literal,
-.hljs-params,
-.hljs-constant {
+.ulogs-hljs-number,
+.ulogs-hljs-preprocessor,
+.ulogs-hljs-built_in,
+.ulogs-hljs-literal,
+.ulogs-hljs-params,
+.ulogs-hljs-constant {
   color: #aa573c;
 }
 
 /* Atelier-Cave Yellow */
-.ruby .hljs-class .hljs-title,
-.css .hljs-rule .hljs-attribute {
+.ruby .ulogs-hljs-class .ulogs-hljs-title,
+.css .ulogs-hljs-rule .ulogs-hljs-attribute {
   color: #a06e3b;
 }
 
 /* Atelier-Cave Green */
-.hljs-string,
-.hljs-value,
-.hljs-inheritance,
-.hljs-header,
-.ruby .hljs-symbol,
-.xml .hljs-cdata {
+.ulogs-hljs-string,
+.ulogs-hljs-value,
+.ulogs-hljs-inheritance,
+.ulogs-hljs-header,
+.ruby .ulogs-hljs-symbol,
+.xml .ulogs-hljs-cdata {
   color: #2a9292;
 }
 
 /* Atelier-Cave Aqua */
-.hljs-title,
-.css .hljs-hexcolor {
+.ulogs-hljs-title,
+.css .ulogs-hljs-hexcolor {
   color: #398bc6;
 }
 
 /* Atelier-Cave Blue */
-.hljs-function,
-.python .hljs-decorator,
-.python .hljs-title,
-.ruby .hljs-function .hljs-title,
-.ruby .hljs-title .hljs-keyword,
-.perl .hljs-sub,
-.javascript .hljs-title,
-.coffeescript .hljs-title {
+.ulogs-hljs-function,
+.python .ulogs-hljs-decorator,
+.python .ulogs-hljs-title,
+.ruby .ulogs-hljs-function .ulogs-hljs-title,
+.ruby .ulogs-hljs-title .ulogs-hljs-keyword,
+.perl .ulogs-hljs-sub,
+.javascript .ulogs-hljs-title,
+.coffeescript .ulogs-hljs-title {
   color: #576ddb;
 }
 
 /* Atelier-Cave Purple */
-.hljs-keyword,
-.javascript .hljs-function {
+.ulogs-hljs-keyword,
+.javascript .ulogs-hljs-function {
   color: #955ae7;
 }
 
-.diff .hljs-deletion,
-.diff .hljs-addition {
+.diff .ulogs-hljs-deletion,
+.diff .ulogs-hljs-addition {
   color: #19171c;
   display: inline-block;
   width: 100%;
 }
 
-.diff .hljs-deletion {
+.diff .ulogs-hljs-deletion {
   background-color: #be4678;
 }
 
-.diff .hljs-addition {
+.diff .ulogs-hljs-addition {
   background-color: #2a9292;
 }
 
-.diff .hljs-change {
+.diff .ulogs-hljs-change {
   color: #576ddb;
 }
 
@@ -108,10 +108,10 @@
 
 .coffeescript .javascript,
 .javascript .xml,
-.tex .hljs-formula,
+.tex .ulogs-hljs-formula,
 .xml .javascript,
 .xml .vbscript,
 .xml .css,
-.xml .hljs-cdata {
+.xml .ulogs-hljs-cdata {
   opacity: 0.5;
 }
