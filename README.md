@@ -5,8 +5,6 @@
 
 [![Build status](https://img.shields.io/appveyor/ci/wkallhof/ulogs/master.svg)](https://ci.appveyor.com/project/wkallhof/ulogs/branch/master)
 
-**Note** This package requires Umbraco v7.3.0-RC+
-
 uLogs is a simple to use, yet extensible, Umbraco Trace Log viewer plugin for the Umbraco 7.3 Back-Office that allows you to view logs by date and a variety of refinements. Includes a simple and intuitive refinement system where you can search for specific text in the log message or refine by log levels (INFO, WARN, and ERROR). 
 
 Utilizes [ngTable][ngTableLink] for an AngularJs driven data table which includes ordering by column (Time, Level, and Message) and simple pagination with configurable items per page selector. 
@@ -15,7 +13,7 @@ Also takes advantage of [highlight.js][highlightJsLink] to provide syntax highli
 
 ### Getting Started ###
 
-Nuget Package: ` Install-Package uLogs -Pre `
+Nuget Package: ` Install-Package uLogs `
 
 ### Usage ###
 
