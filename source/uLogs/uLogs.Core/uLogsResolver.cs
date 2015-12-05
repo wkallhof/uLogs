@@ -18,7 +18,7 @@ namespace uLogs
         static uLogsResolver()
         {
             _logsDirectory = ConfigurationManager.AppSettings["uLogs.LogsDirectory"] ?? "~/App_Data/Logs";
-            _logFileName = ConfigurationManager.AppSettings["uLogs.LogFileName"] ?? "UmbracoTraceLog.txt";
+            _logFileName = ConfigurationManager.AppSettings["uLogs.LogFileName"] ?? "UmbracoTraceLog.";
 
             _logDataProviderType = typeof(UmbracoLogDataProvider);
             _logFileProviderType = typeof(UmbracoLogFileProvider);
