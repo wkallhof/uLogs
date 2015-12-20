@@ -18,31 +18,7 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
 
     //App state
     $scope.initialLoad = false;
-    $scope.$tab = $('a:contains("Trace Logs")');
-
-    /*
-    * Initial load function to set loaded state
-    */
-    $scope.initLoad = function () {
-        if (!$scope.initialLoad) {
-            //Get the available log dates to view log entries for.
-            uLogsApi.getAvailableDates()
-                .then(function (response) {
-                    $scope.dates = response.data;
-                    $scope.initialLoad = true;
-                });
-        }
-    }
-
-    //If we have a tab, set the click handler so we only
-    //load the content on tab click. 
-    if ($scope.$tab && $scope.$tab.length > 0) {
-        $scope.$tab.on('click', $scope.initLoad.bind(this));
-    }
-    else {
-        $scope.initLoad();
-    }
-
+   
     /*
     * Handles when the user selects a log date from the dropdown.
     * Calls out to the uLogs API to get the logs for the given date. Updates
@@ -114,6 +90,34 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
             $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
         }
     })
+
+
+    /*
+    * Initial load function to set loaded state
+    */
+    $scope.initLoad = function () {
+        if (!$scope.initialLoad) {
+            //Get the available log dates to view log entries for.
+            uLogsApi.getAvailableDates()
+                .then(function (response) {
+                    $scope.dates = response.data;
+                    $scope.initialLoad = true;
+                });
+        }
+    }
+
+    $(function () {
+        $scope.$tab = $('a:contains("Trace Logs")');
+
+        //If we have a tab, set the click handler so we only
+        //load the content on tab click. 
+        if ($scope.$tab && $scope.$tab.length > 0) {
+            $scope.$tab.on('click', $scope.initLoad.bind(this));
+        }
+        else {
+            $scope.initLoad();
+        }
+    });
 
 })
 
