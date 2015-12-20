@@ -16,13 +16,32 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
     //Tracks the selected filter type
     $scope.selectedFilter = "";
 
+    //App state
+    $scope.initialLoad = false;
+    $scope.$tab = $('a:contains("Trace Logs")');
+
     /*
-    * Get the available log dates to view log entries for.
-    * TODO : Update to only run this once the developer tab is clicked
+    * Initial load function to set loaded state
     */
-    uLogsApi.getAvailableDates().then(function (response) {
-        $scope.dates = response.data;
-    });
+    $scope.init = function () {
+        if (!$scope.initialLoad) {
+            //Get the available log dates to view log entries for.
+            uLogsApi.getAvailableDates()
+                .then(function (response) {
+                    $scope.dates = response.data;
+                    $scope.initialLoad = true;
+                });
+        }
+    }
+
+    //If we have a tab, set the click handler so we only
+    //load the content on tab click. 
+    if ($scope.$tab && $scope.$tab.length > 0) {
+        $scope.$tab.on('click', $scope.init.bind(this));
+    }
+    else {
+        $scope.init();
+    }
 
     /*
     * Handles when the user selects a log date from the dropdown.
@@ -109,8 +128,7 @@ angular.module("umbraco.resources").factory("uLogsApi", function ($http) {
             return $http.get("backoffice/uLogs/uLogsApi/GetLogsForDate?date=" + encodeURIComponent(date));
         },
 
-        getAvailableDates: function()
-        {
+        getAvailableDates: function () {
             return $http.get("backoffice/uLogs/uLogsApi/GetAvailableDates");
         }
     };
@@ -123,17 +141,17 @@ angular.module("umbraco.resources").factory("uLogsApi", function ($http) {
 * <code> structure with syntax highlighting
 */
 angular.module('umbraco').directive('snippet', ['$timeout', '$interpolate', function ($timeout, $interpolate) {
-        "use strict";
-        return {
-            restrict: 'E',
-            template: '<pre><code ng-transclude></code></pre>',
-            replace: true,
-            transclude: true,
-            link: function (scope, elm) {
-                var tmp = $interpolate(elm.find('code').text())(scope);
-                tmp = tmp.replace(/`/g, '');
-                var highlight = hljs.highlight('prolog', tmp);
-                elm.find('code').html(highlight.value);
-            }
-        };
+    "use strict";
+    return {
+        restrict: 'E',
+        template: '<pre><code ng-transclude></code></pre>',
+        replace: true,
+        transclude: true,
+        link: function (scope, elm) {
+            var tmp = $interpolate(elm.find('code').text())(scope);
+            tmp = tmp.replace(/`/g, '');
+            var highlight = hljs.highlight('prolog', tmp);
+            elm.find('code').html(highlight.value);
+        }
+    };
 }]);
