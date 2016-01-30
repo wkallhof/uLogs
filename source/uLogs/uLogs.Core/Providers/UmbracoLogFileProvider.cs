@@ -44,7 +44,8 @@ namespace uLogs.Providers
         /// <returns>Name of machine</returns>
         private string FetchMachineFromFile(string file)
         {
-            var sections = file.Split('.');
+            var fileName = Path.GetFileName(file);
+            var sections = fileName.Split('.');
             if (sections.Length < 2) return string.Empty;
 
             return sections[1];
