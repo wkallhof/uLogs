@@ -31,9 +31,23 @@ namespace uLogs.Providers
                 .Select(x => new LogFile()
                 {
                     Path = x,
-                    Date = this.FetchDateFromFile(x)
+                    Date = this.FetchDateFromFile(x),
+                    Machine = this.FetchMachineFromFile(x)
                 });
 
+        }
+
+        /// <summary>
+        /// Handles parsing the machine name from the file name
+        /// </summary>
+        /// <param name="file">File to read machine name from</param>
+        /// <returns>Name of machine</returns>
+        private string FetchMachineFromFile(string file)
+        {
+            var sections = file.Split('.');
+            if (sections.Length < 2) return string.Empty;
+
+            return sections[1];
         }
 
         /// <summary>

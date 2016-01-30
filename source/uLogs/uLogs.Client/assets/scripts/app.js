@@ -20,12 +20,12 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
     $scope.initialLoad = false;
    
     /*
-    * Handles when the user selects a log date from the dropdown.
-    * Calls out to the uLogs API to get the logs for the given date. Updates
+    * Handles when the user selects a log file from the dropdown.
+    * Calls out to the uLogs API to get the logs for the given file. Updates
     * the counts and sets the table data for the new logs
     */
-    $scope.onDateChange = function () {
-        uLogsApi.getLogsForDate($scope.selectedDate).then(function (response) {
+    $scope.onFileChange = function () {
+        uLogsApi.getLogsForFile($scope.selectedFile).then(function (response) {
             $scope.logItems = response.data;
 
             $scope.allCount = $scope.logItems.length;
@@ -97,10 +97,10 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
     */
     $scope.initLoad = function () {
         if (!$scope.initialLoad) {
-            //Get the available log dates to view log entries for.
-            uLogsApi.getAvailableDates()
+            //Get the available log files to view log entries for.
+            uLogsApi.getAvailableFiles()
                 .then(function (response) {
-                    $scope.dates = response.data;
+                    $scope.files = response.data;
                     $scope.initialLoad = true;
                 });
         }
@@ -128,12 +128,12 @@ angular.module("umbraco").controller("uLogsController", function ($scope, $filte
 */
 angular.module("umbraco.resources").factory("uLogsApi", function ($http) {
     return {
-        getLogsForDate: function (date) {
-            return $http.get("backoffice/uLogs/uLogsApi/GetLogsForDate?date=" + encodeURIComponent(date));
+        getLogsForFile: function (file) {
+            return $http.get("backoffice/uLogs/uLogsApi/GetLogsForFile", { params:file});
         },
 
-        getAvailableDates: function () {
-            return $http.get("backoffice/uLogs/uLogsApi/GetAvailableDates");
+        getAvailableFiles: function () {
+            return $http.get("backoffice/uLogs/uLogsApi/GetAvailableFiles");
         }
     };
 });

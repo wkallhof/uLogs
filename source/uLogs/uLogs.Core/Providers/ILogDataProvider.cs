@@ -10,16 +10,17 @@ namespace uLogs.Providers
     public interface ILogDataProvider
     {
         /// <summary>
-        /// Get the log entries for a given log date
+        /// Get the log entries for a given log file
         /// </summary>
         /// <param name="date">Date to get logs for</param>
+        /// <param name="machine">Machine to get logs for</param>
         /// <returns>Collection of Log Data Items</returns>
-        IEnumerable<LogDataItem> GetLogData(DateTime date);
+        IEnumerable<LogDataItem> GetLogData(DateTime date, string machine);
 
         /// <summary>
-        /// Get the available log dates
+        /// Get the available log files
         /// </summary>
-        /// <returns>Collection of DateTimes</returns>
-        IEnumerable<DateTime> GetLogDates();
+        /// <returns>Collection of LogFiles</returns>
+        IEnumerable<LogFile> GetLogFiles();
     }
 }

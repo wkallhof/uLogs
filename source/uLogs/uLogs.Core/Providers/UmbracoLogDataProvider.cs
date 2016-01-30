@@ -36,16 +36,15 @@ namespace uLogs.Providers
         }
 
         /// <summary>
-        /// Get the log entries for a given date. The date corresponds to a
-        /// single log file.
+        /// Get the log entries for a given file.
         /// </summary>
-        /// <param name="date">Date to fetch logs for</param>
+        /// <param name="date">Date to fetch the logs from</param>
+        /// <param name="machine">Machine to fetch the logs from</param>
         /// <returns>List of log files</returns>
-        public IEnumerable<LogDataItem> GetLogData(DateTime date)
+        public IEnumerable<LogDataItem> GetLogData(DateTime date, string machine)
         {
-            //Get the log file for the given date
-            var file = this._logFiles
-                .FirstOrDefault(x => x.Date.Equals(date));
+            //Find the file
+            var file = this._logFiles.FirstOrDefault(x => x.Date.Equals(date) && x.Machine.Equals(machine));
 
             //If it doesn't exist, throw exception
             if (file == null || string.IsNullOrWhiteSpace(file.Path) || !File.Exists(file.Path))
@@ -111,14 +110,12 @@ namespace uLogs.Providers
         }
 
         /// <summary>
-        /// Get the available log dates to read logs from
+        /// Get the available log files to read logs from
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<DateTime> GetLogDates()
+        public IEnumerable<LogFile> GetLogFiles()
         {
-            return this._logFiles
-                .Select(x => x.Date)
-                .OrderBy(x => x);
+            return this._logFiles;
         }
     }
 }

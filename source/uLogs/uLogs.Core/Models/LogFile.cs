@@ -9,5 +9,6 @@ namespace uLogs.Models
     {
         public string Path { get; set; }
         public DateTime Date { get; set; }
+        public string Machine { get; set; }
     }
 }

@@ -22,14 +22,14 @@ namespace uLogs.Controllers
             this._dataProvider = uLogsResolver.GetLogDateProviderInstance();
         }
 
-        public IEnumerable<LogDataItem> GetLogsForDate(DateTime date)
+        public IEnumerable<LogDataItem> GetLogsForFile(DateTime date, string machine)
         {
-            return _dataProvider.GetLogData(date);
+            return _dataProvider.GetLogData(date, machine);
         }
 
-        public IEnumerable<DateTime> GetAvailableDates()
+        public IEnumerable<LogFile> GetAvailableFiles()
         {
-            return this._dataProvider.GetLogDates().OrderByDescending(x => x);
+            return this._dataProvider.GetLogFiles().OrderByDescending(x => x.Date);
         }
     }
 
