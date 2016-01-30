@@ -46,7 +46,7 @@ namespace uLogs.Providers
         {
             var fileName = Path.GetFileName(file);
             var sections = fileName.Split('.');
-            if (sections.Length < 2) return string.Empty;
+            if (sections.Length < 2 || sections[1] == "txt") return string.Empty;
 
             return sections[1];
         }

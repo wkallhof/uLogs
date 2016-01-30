@@ -44,7 +44,7 @@ namespace uLogs.Providers
         public IEnumerable<LogDataItem> GetLogData(DateTime date, string machine)
         {
             //Find the file
-            var file = this._logFiles.FirstOrDefault(x => x.Date.Equals(date) && x.Machine.Equals(machine));
+            var file = this._logFiles.FirstOrDefault(x => x.Date.Equals(date) && ((machine == null && x.Machine == string.Empty )|| x.Machine.Equals(machine)));
 
             //If it doesn't exist, throw exception
             if (file == null || string.IsNullOrWhiteSpace(file.Path) || !File.Exists(file.Path))

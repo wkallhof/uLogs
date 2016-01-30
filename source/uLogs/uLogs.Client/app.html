@@ -23,7 +23,7 @@
                         <div class="col-md-12">
                             <div class="form-group" style="padding-bottom:40px">
                                 <label class="control-label" style="width:80px">Log File</label>
-                                <select style="width:inherit;" ng-options="file as ('Date: '+(file.Date | date:'M/d/yy') + ' Machine: ' + (file.Machine)) for file in files" ng-model="selectedFile" ng-change="onFileChange()" no-dirty-check></select>
+                                <select style="width:inherit;" ng-options="file as ('Date: '+(file.Date | date:'M/d/yy') + (file.Machine.length > 0 ? ' Machine: ' + file.Machine : '')) for file in files" ng-model="selectedFile" ng-change="onFileChange()" no-dirty-check></select>
                             </div>
                           </div>
                     </div>
