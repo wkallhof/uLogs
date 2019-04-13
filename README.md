@@ -1,5 +1,6 @@
+# No longer being maintained! Please reach out if you'd like to take ownership
 
-# uLogs #
+# uLogs
 
 ![Logo][logoImage]
 
